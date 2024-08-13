@@ -8,9 +8,9 @@ A1是一个神奇的数字，本软件是一个工具，用于将Excel文件的�
 
 A1은 신비로운 숫자이며, 이 소프트웨어는 Excel 파일의 활성 셀을 A1 셀로 설정하기 위한 도구입니다. 이 소프트웨어는 오픈소스로서 상업적 및 비상업적 용도로 자유롭게 사용할 수 있습니다. 폴더 선택을 지원하며, 파일이나 폴더를 프로그램 창에 드래그 앤 드롭할 수 있습니다. 또한 여러 파일을 동시에 처리할 수 있습니다. 이 도구가 당신에게 유용하게 사용되기를 바라며, 소중한 시간을 절약하는 데 도움이 되기를 바랍니다.
 
-This software is an open-source program, and it can be used for any purpose by individuals, companies, or organizations, whether for commercial or non-commercial purposes, without the need to contact the original author. You are allowed to modify the source code, but the author's attribution to SAHO Inc. must not be removed. The software author assumes no responsibility for any data loss, corruption, or economic loss resulting from the use of this software. If you do not accept these terms, please do not use this software and remove it from your computer.
-
 # License
+
+This software is an open-source program, and it can be used for any purpose by individuals, companies, or organizations, whether for commercial or non-commercial purposes, without the need to contact the original author. You are allowed to modify the source code, but the author's attribution to SAHO Inc. must not be removed. The software author assumes no responsibility for any data loss, corruption, or economic loss resulting from the use of this software. If you do not accept these terms, please do not use this software and remove it from your computer.
 
 本ソフトウェアはオープンソースプログラムであり、個人、企業、または組織が、商業目的または非商業目的を問わず、あらゆる目的で使用することができます。使用にあたり、原作者への連絡は不要です。ソースコードの変更は許可されていますが、SAHO Inc.の著作表示を削除することはできません。本ソフトウェアの使用により発生したデータの損失や破損、または経済的損失について、ソフトウェアの作者は一切責任を負いません。これらの条件に同意できない場合は、本ソフトウェアを使用せず、コンピュータから削除してください。
 
