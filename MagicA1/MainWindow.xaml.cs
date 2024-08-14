@@ -23,11 +23,16 @@ namespace MagicA1
                 this.DragMove();
             }
         }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close(); // Closes the window when the button is clicked
         }
-
 
         private void Border_DragOver(object sender, DragEventArgs e)
         {
@@ -35,12 +40,13 @@ namespace MagicA1
             {
                 string[] fileNames = (string[])e.Data.GetData(DataFormats.FileDrop, true);
 
-                // Check if all dropped items are either directories or Excel files
+                // Check if all dropped items are either directories or Excel files (.xlsx, .xlsm)
                 bool allItemsValid = true;
 
                 foreach (var fileName in fileNames)
                 {
-                    if (!Directory.Exists(fileName) && !Path.GetExtension(fileName).Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
+                    if (!Directory.Exists(fileName) &&
+                        !IsExcelFile(fileName))
                     {
                         allItemsValid = false;
                         break;
@@ -64,7 +70,6 @@ namespace MagicA1
             e.Handled = true;
         }
 
-
         private async void Border_Drop(object sender, DragEventArgs e)
         {
             try
@@ -82,7 +87,7 @@ namespace MagicA1
                             // Process all Excel files in the directory (including subdirectories)
                             tasks.Add(ProcessAllExcelFilesInFolder(fileName));
                         }
-                        else if (Path.GetExtension(fileName).Equals(".xlsx", StringComparison.OrdinalIgnoreCase))
+                        else if (IsExcelFile(fileName))
                         {
                             // Process a single Excel file
                             tasks.Add(ProcessSingleExcelFile(fileName));
@@ -97,9 +102,7 @@ namespace MagicA1
             {
                 MessageBox.Show($"{ex.Message}");
             }
-            
         }
-
 
         private async Task ProcessSingleExcelFile(string filePath)
         {
@@ -146,8 +149,6 @@ namespace MagicA1
             if (folderDialog.ShowDialog() == true)
             {
                 string selectedFolder = folderDialog.FolderName;
-                // Update status in UI
-                //AddStatus(selectedFolder, "...");
                 await ProcessAllExcelFilesInFolder(selectedFolder);
             }
         }
@@ -156,7 +157,8 @@ namespace MagicA1
         {
             try
             {
-                var excelFiles = Directory.GetFiles(folderPath, "*.xlsx", SearchOption.AllDirectories);
+                var excelFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.AllDirectories)
+                    .Where(f => IsExcelFile(f));
 
                 foreach (var filePath in excelFiles)
                 {
@@ -173,7 +175,6 @@ namespace MagicA1
 
                             // Set the top-left cell of the visible view to A1
                             worksheet.SheetView.TopLeftCellAddress = worksheet.Cell("A1").Address;
-
 
                             // Save the changes to the file
                             workbook.Save();
@@ -192,9 +193,15 @@ namespace MagicA1
             }
         }
 
+        private bool IsExcelFile(string fileName)
+        {
+            var extension = Path.GetExtension(fileName).ToLower();
+            return extension == ".xlsx" || extension == ".xlsm";
+        }
+
+#pragma warning disable CA1416 // Suppress platform-specific API warning
         private void AddStatus(string itemName, string status)
         {
-            // Add status to the ListBox
             Dispatcher.Invoke(() =>
             {
                 var duration = 3;
@@ -208,5 +215,6 @@ namespace MagicA1
                     TimeSpan.FromSeconds(duration));
             });
         }
+#pragma warning restore CA1416
     }
 }

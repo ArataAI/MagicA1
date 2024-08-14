@@ -6,36 +6,22 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>MagicA1.ico</ApplicationIcon>
+    <ApplicationIcon>assets\logo.ico</ApplicationIcon>
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
     <Title>MagicA1</Title>
     <Copyright>SAHO Inc.</Copyright>
-    <PackageIcon>MagicA1.png</PackageIcon>
+    <PackageIcon>logo.png</PackageIcon>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageProjectUrl>https://saho.jp</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/ArataAI/MagicA1</PackageProjectUrl>
     <Description>In the realm of the divine, A1 is a number imbued with magical power.</Description>
+    <RepositoryUrl>https://github.com/ArataAI/MagicA1</RepositoryUrl>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="MagicA1.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="MagicA1.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="ClosedXML" Version="0.104.0-preview2" />
-    <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="MagicA1.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="MagicA1.png">
+    <None Update="assets\logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
@@ -43,6 +29,17 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="assets\logo.ico" />
+    <Resource Include="assets\logo.png" />
+    <Resource Include="assets\logo.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.102.3" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
   </ItemGroup>
 
 </Project>
